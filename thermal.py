@@ -36,7 +36,7 @@ try:
             sensor_value = float(numeric_values)
             print(sensor_value)
             # print(sensor_data,end='\n')
-            if 60<sensor_value<200:
+            if 33.0<sensor_value<200.0:
                 time_data.append(current_time)
                 sensor_data.append(sensor_value)
         
@@ -44,7 +44,7 @@ try:
     # Close the serial port when done
     ser.close()
     print(sensor_data)
-    sio.savemat('temp', {'my_array': sensor_data})
+    sio.savemat('temp.mat', {'my_array': sensor_data})
     # Plot the data
     plt.plot(time_data, sensor_data)
     plt.xlabel('Time (seconds)')
