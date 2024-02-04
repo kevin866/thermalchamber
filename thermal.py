@@ -1,4 +1,4 @@
-import PID
+import serial
 import time
 import matplotlib.pyplot as plt
 import re  # Import the regular expressions library
@@ -6,7 +6,7 @@ import scipy.io as sio
 # Set the serial port name and baud rate (must match Arduino settings)
 port = '/dev/tty.usbmodem21101'  # Change to the appropriate port on your computer
 baud_rate = 9600  # Must match the baud rate set in your Arduino sketch
-ser = PID.Serial(port, baud_rate)
+ser = serial.Serial(port, baud_rate)
 # Open the serial port
 print(f"Connected to {port} at {baud_rate} baud")
 # Initialize empty lists to store data
@@ -53,7 +53,7 @@ try:
     plt.grid(True)
     plt.show()
 
-except PID.SerialException:
+except serial.SerialException:
     print(f"Failed to connect to {port}")
 except KeyboardInterrupt:
     print("Exiting program")
