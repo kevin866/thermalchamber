@@ -1,4 +1,4 @@
-import serial
+import PID
 import time
 import matplotlib.pyplot as plt
 import re  # Import the regular expressions library
@@ -6,7 +6,7 @@ import scipy.io as sio
 # Set the serial port name and baud rate (must match Arduino settings)
 port = '/dev/tty.usbmodem21101'  # Change to the appropriate port on your computer
 baud_rate = 9600  # Must match the baud rate set in your Arduino sketch
-ser = serial.Serial(port, baud_rate)
+ser = PID.Serial(port, baud_rate)
 # Open the serial port
 print(f"Connected to {port} at {baud_rate} baud")
 # Initialize empty lists to store data
@@ -32,7 +32,7 @@ try:
         if numeric_values:
             # Assuming there may be multiple numeric values in a single line,
             # we'll take the first one (index 0) as the sensor data.
-            numeric_values = float(numeric_values[0])*1.8+32
+            numeric_values = float(numeric_values[0])
             sensor_value = float(numeric_values)
             print(sensor_value)
             # print(sensor_data,end='\n')
@@ -53,7 +53,7 @@ try:
     plt.grid(True)
     plt.show()
 
-except serial.SerialException:
+except PID.SerialException:
     print(f"Failed to connect to {port}")
 except KeyboardInterrupt:
     print("Exiting program")
