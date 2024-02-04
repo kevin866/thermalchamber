@@ -14,7 +14,18 @@ time_data = []
 sensor_data = []
 # Regular expression pattern to extract numeric values (including decimal point)
 numeric_pattern = r"[-+]?\d*\.\d+|\d+"
+# Define PID parameters
+kp = 1.0  # Proportional gain
+ki = 0.1  # Integral gain
+kd = 0.2  # Derivative gain
 
+# Initialize PID variables
+previous_error = 0
+integral = 0
+
+# Setpoint and Arduino communication parameters
+setpoint = input("Set your design temperature in Fahrenheit: ")  # Change this value to your desired setpoint
+time.sleep(2)  # Wait for Arduino to initialize
 try:
     # Record data for 2 minutes
     end_time = time.time() + 120  # 2 minutes (120 seconds)
