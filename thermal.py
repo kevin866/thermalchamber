@@ -43,9 +43,8 @@ try:
         if numeric_values:
             # Assuming there may be multiple numeric values in a single line,
             # we'll take the first one (index 0) as the sensor data.
-            numeric_values = float(numeric_values[0])
-            sensor_value = float(numeric_values)
-            print(sensor_value)
+            sensor_value = float(numeric_values[0])*100*1.8+32
+            print(numeric_values)
             # print(sensor_data,end='\n')
             if 33.0<sensor_value<200.0:
                 time_data.append(current_time)

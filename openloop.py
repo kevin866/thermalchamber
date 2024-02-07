@@ -6,7 +6,7 @@ kp = 2.0
 
 # Setpoint and Arduino communication parameters
 setpoint = float(input("Set your design temperature in Fahrenheit: "))  # Change this value to your desired setpoint
-arduino_port = '/dev/tty.usbmodem1101'  # Replace with your Arduino's serial port
+arduino_port = '/dev/tty.usbmodem21101'  # Replace with your Arduino's serial port
 baud_rate = 9600
 
 # Initialize the serial connection to the Arduino
@@ -40,11 +40,11 @@ try:
         # Use regular expressions to extract numeric values from the string
         numeric_values = re.findall(numeric_pattern, data_str)
         numeric_values = float(numeric_values[0])
-        analog_value = float(numeric_values)
-        print(analog_value)
+        temp = float(numeric_values)*100*1.8+32
+        print(temp)
 
         # Calculate the error
-        error = setpoint - analog_value
+        error = setpoint - temp
 
         # Calculate PID terms
         proportional = kp * error
