@@ -6,7 +6,7 @@ kp = 2.0
 
 # Setpoint and Arduino communication parameters
 setpoint = float(input("Set your design temperature in Fahrenheit: "))  # Change this value to your desired setpoint
-arduino_port = '/dev/tty.usbmodem21101'  # Replace with your Arduino's serial port
+arduino_port = '/dev/tty.usbmodem1101'  # Replace with your Arduino's serial port
 baud_rate = 9600
 
 # Initialize the serial connection to the Arduino
