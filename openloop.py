@@ -2,7 +2,7 @@ import serial
 import time
 import matplotlib.pyplot as plt
 import re
-kp = 2.0
+kp = 20.0
 
 # Setpoint and Arduino communication parameters
 setpoint = float(input("Set your design temperature in Fahrenheit: "))  # Change this value to your desired setpoint
@@ -18,11 +18,12 @@ numeric_pattern = r"[-+]?\d*\.\d+|\d+"
 # Initialize lists to store temperature and time data
 time_data = []
 temperature_data = []
-
+pwm_data = []
 # Set up the real-time plot
 plt.ion()  # Turn on interactive mode for real-time plotting
 fig, ax = plt.subplots()
-line, = ax.plot([], [])
+line1, = ax.plot([], [], label='Temperature')
+line2, = ax.plot([], [], label='PWM')
 ax.set_xlabel('Time (s)')
 ax.set_ylabel('Temperature (Fahrenheit)')
 ax.set_title('Real-Time Temperature vs. Time')
@@ -57,6 +58,7 @@ try:
             pwm_value = 0
         elif pwm_value > 255:
             pwm_value = 255
+        print(pwm_value)
 
         # Output the PWM value to pin 7
         arduino.write(f"P{int(pwm_value)}\n".encode())
@@ -64,11 +66,13 @@ try:
 
         # Store the current time and temperature data
         current_time = time.time()
-        temperature_data.append(analog_value)
+        temperature_data.append(temp)
         time_data.append(current_time)
+        pwm_data.append(pwm_value)
 
         # Update the real-time plot
-        line.set_data(time_data, temperature_data)
+        line1.set_data(time_data, temperature_data)
+        line2.set_data(time_data, pwm_data)
         ax.relim()
         ax.autoscale_view()
 
