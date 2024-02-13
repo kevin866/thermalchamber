@@ -40,9 +40,10 @@ try:
 
         # Use regular expressions to extract numeric values from the string
         numeric_values = re.findall(numeric_pattern, data_str)
+        print(numeric_values)
         numeric_values = float(numeric_values[0])
-        temp = float(numeric_values)*100*1.8+32
-        print(temp)
+        temp = float(numeric_values)
+        
 
         # Calculate the error
         error = setpoint - temp
