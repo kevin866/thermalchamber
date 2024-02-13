@@ -14,7 +14,7 @@ desired_temps = []
 recorded_temps = []
 def temperature_to_pwm(desired_temp):
     # Simplified function to convert temperature to PWM value
-    pwm = int(float(desired_temp-32)/1.8/100/5*255)
+    pwm = int(float(desired_temp-32)*255/1.8/100/5)
     print("corresponding pwm value for the desired tempeature:", pwm)
     return pwm
 # Ask for desired temperature
@@ -49,7 +49,7 @@ def update_plot(frame):
 
 # Setting up plot
 plt.figure()
-ani = FuncAnimation(plt.gcf(), update_plot, interval=1000)
+ani = FuncAnimation(plt.gcf(), update_plot, interval=10)
 
 plt.tight_layout()
 plt.show()
