@@ -45,11 +45,11 @@ def update_plot(frame):
         
         # Send PWM value to Arduino
         print("Sending PWM value:", pwm_value)
-        ser.write(str(pwm_value/255).encode())
+        ser.write(str(pwm_value).encode())
 
 # Setting up plot
 plt.figure()
-ani = FuncAnimation(plt.gcf(), update_plot, interval=10)
+ani = FuncAnimation(plt.gcf(), update_plot, interval=1000)
 
 plt.tight_layout()
 plt.show()
