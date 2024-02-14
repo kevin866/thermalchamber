@@ -27,6 +27,7 @@ def update_plot(frame):
     if ser.in_waiting > 0:
         line = ser.readline().decode('utf-8').rstrip()
         recorded_temp = float(line) # Simulated as direct temperature for simplicity
+        
         print("Analog value (simulated temperature):", recorded_temp)
         
         # Append data for plotting
