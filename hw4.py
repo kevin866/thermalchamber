@@ -45,7 +45,7 @@ def update_plot(frame):
         
         # Send PWM value to Arduino
         print("Sending PWM value:", pwm_value)
-        ser.write(str(pwm_value).encode())
+        ser.write(str(pwm_value/255).encode())
 
 # Setting up plot
 plt.figure()
