@@ -5,7 +5,7 @@ from matplotlib.animation import FuncAnimation
 
 # Establish serial connection to Arduino
 # Replace 'COM3' with your Arduino's serial port
-ser = serial.Serial('/dev/tty.usbmodem21301', 9600, timeout=1)
+ser = serial.Serial('/dev/tty.usbmodem2101', 9600, timeout=1)
 time.sleep(2) # Wait for the connection to establish
 
 # Lists to store temperature data
