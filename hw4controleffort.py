@@ -28,7 +28,7 @@ def update_plot(frame):
         line = ser.readline().decode('utf-8').rstrip()
         parts = line.split(',')  # Assuming data is sent as 'temperature,controlEffort'
         if len(parts) == 2:
-            recorded_temp, control_effort = float(parts[0]) / 100.0, float(parts[1])/100.0
+            recorded_temp, control_effort = float(parts[0]) / 100.0, float(parts[1])/1000.0
             print("Recorded temperature:", recorded_temp, "Control Effort:", control_effort)
             
             # Append data for plotting
