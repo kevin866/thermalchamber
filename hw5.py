@@ -2,6 +2,7 @@ import serial
 import time
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+import numpy as np
 
 # Establish serial connection to Arduino
 ser = serial.Serial('/dev/tty.usbmodem21101', 9600, timeout=1)
@@ -30,6 +31,7 @@ def update_plot(frame):
             print("Recorded temperature:", recorded_temp, "T1:", T11, "T2:", T21, "T3:", T31)
         
             
+
             # Append data for plotting
             current_time = time.time()
             times.append(current_time)
@@ -59,3 +61,10 @@ ani = FuncAnimation(plt.gcf(), update_plot, interval=1000)
 
 plt.tight_layout()
 plt.show()
+np.save('T11.npy', T1)
+np.save('T21.npy', T2)
+np.save('T31.npy', T3)
+np.save('Temp1.npy', recorded_temps)
+np.save('times1.npy', times)
+
+
