@@ -46,7 +46,7 @@ while True:
 
             # Update plot
             drawnow(update_plot)
-            plt.pause(0.000001)
+            # plt.pause(0.000001)
 
     except KeyboardInterrupt:
         print("Program Interrupted")
