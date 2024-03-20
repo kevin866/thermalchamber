@@ -3,6 +3,7 @@ import time
 import matplotlib.pyplot as plt
 import re  # Import the regular expressions library
 import scipy.io as sio
+import numpy as np
 # Set the serial port name and baud rate (must match Arduino settings)
 port = '/dev/tty.usbmodem21101'  # Change to the appropriate port on your computer
 baud_rate = 9600  # Must match the baud rate set in your Arduino sketch

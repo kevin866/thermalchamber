@@ -29,10 +29,8 @@ def update_plot(frame):
         if len(parts) == 4:
             recorded_temp, T11, T21, T31  = float(parts[0]) , float(parts[1]), float(parts[2]) , float(parts[3])
             print("Recorded temperature:", recorded_temp, "T1:", T11, "T2:", T21, "T3:", T31)
-        
-            
-
-            # Append data for plotting
+  
+             # Append data for plotting
             current_time = time.time()
             times.append(current_time)
             # desired_temps.append(pwm_value)
