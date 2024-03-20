@@ -10,6 +10,7 @@ import numpy as np
 # Initialize lists to store data
 desired_data = []
 current_data = []
+times = []
 
 # Create serial connection (adjust port and baudrate accordingly)
 ser = serial.Serial('/dev/tty.usbmodem21101', 9600, timeout=1)
@@ -25,11 +26,11 @@ send_setpoint(setpoint)
 
 # Function to update plot
 def update_plot():
-    plt.plot(desired_data, label='Desired Value')
-    plt.plot(current_data, label='Current Value')
+    plt.plot(times, desired_data, label='Desired Angle')
+    plt.plot(times, current_data, label='Current Angle')
     plt.xlabel('Time')
-    plt.ylabel('Value')
-    plt.title('Desired vs Current Value over Time')
+    plt.ylabel('Angle')
+    plt.title('Desired vs Current Angle over Time')
     plt.legend()
     plt.grid(True)
 
@@ -43,6 +44,9 @@ while True:
         if len(parts) == 2:  # Ensure valid data format
             current_data.append(float(parts[0]))
             desired_data.append(float(parts[1]))
+            # Append data for plotting
+            current_time = time.time()
+            times.append(current_time)
 
             # Update plot
             drawnow(update_plot)
