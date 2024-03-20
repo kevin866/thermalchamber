@@ -37,12 +37,12 @@ def update_plot():
 while True:
     try:
         # Read data from Arduino
-        data = ser.readline().decode().strip().split(' ')
+        # data = ser.readline().decode().strip().split(' ')
         line = ser.readline().decode('utf-8').rstrip()
         parts = line.split(',')  # Assuming data is sent as 'temperature,controlEffort'
-        if len(data) == 3:  # Ensure valid data format
-            current_data.append(parts(data[1]))
-            desired_data.append(parts(data[2]))
+        if len(parts) == 2:  # Ensure valid data format
+            current_data.append(float(parts[0]))
+            desired_data.append(float(parts[1]))
 
             # Update plot
             drawnow(update_plot)
